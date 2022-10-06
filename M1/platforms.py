@@ -40,6 +40,9 @@ imdb_movies = merge_and_add_available_plataforms_column(imdb_movies, hulu, 'avai
 imdb_movies = merge_and_add_available_plataforms_column(imdb_movies, amazon, 'available_amazon')
 imdb_movies = merge_and_add_available_plataforms_column(imdb_movies, disney, 'available_disney')
 imdb_platforms = merge_and_add_available_plataforms_column(imdb_movies, netflix, 'available_netflix')
+imdb_platforms.dropna(inplace=True)
+# final["year"] = pd.to_numeric(final["year"])
+imdb_platforms["year"] = pd.to_numeric(imdb_platforms["year"])
 
 
 
