@@ -36,10 +36,11 @@ disney = open_refine_plataforms_dataframes('datasets/platforms/disney_plus_title
 netflix = open_refine_plataforms_dataframes('datasets/platforms/netflix_titles.csv')
 
 
+
 imdb_movies = merge_and_add_available_plataforms_column(imdb_movies, hulu, 'available_hulu')
 imdb_movies = merge_and_add_available_plataforms_column(imdb_movies, amazon, 'available_amazon')
 imdb_movies = merge_and_add_available_plataforms_column(imdb_movies, disney, 'available_disney')
-imdb_platforms = merge_and_add_available_plataforms_column(imdb_movies, netflix, 'available_netflix')
+platforms = merge_and_add_available_plataforms_column(imdb_movies, netflix, 'available_netflix')
 
 
 

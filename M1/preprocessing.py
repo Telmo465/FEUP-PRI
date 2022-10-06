@@ -7,13 +7,12 @@ from functools import reduce
 
 
 from movies import rotten_movies, rotten_reviews
-from platforms import imdb_platforms
+from platforms import platforms
 
 
 rotten = pd.merge(rotten_movies, rotten_reviews, on='rotten_tomatoes_link').drop('rotten_tomatoes_link', axis=1)
-final = pd.merge(imdb_platforms, rotten, on=['movie_title', 'year']).drop_duplicates(subset=['review_content'], keep='first')
-final.to_csv("datasets/final.csv")
-
+movies_and_reviews = pd.merge(platforms, rotten, on=['movie_title', 'year']).drop_duplicates(subset=['review_content'], keep='first')
+movies_and_reviews.to_csv("datasets/movies_and_reviews.csv")
 
 
 '''
