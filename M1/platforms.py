@@ -40,7 +40,10 @@ netflix = open_refine_plataforms_dataframes('datasets/platforms/netflix_titles.c
 imdb_movies = merge_and_add_available_plataforms_column(imdb_movies, hulu, 'available_hulu')
 imdb_movies = merge_and_add_available_plataforms_column(imdb_movies, amazon, 'available_amazon')
 imdb_movies = merge_and_add_available_plataforms_column(imdb_movies, disney, 'available_disney')
-platforms = merge_and_add_available_plataforms_column(imdb_movies, netflix, 'available_netflix')
+imdb_platforms = merge_and_add_available_plataforms_column(imdb_movies, netflix, 'available_netflix')
+imdb_platforms.dropna(inplace=True)
+imdb_platforms["year"] = pd.to_numeric(imdb_platforms["year"])
+
 
 
 
