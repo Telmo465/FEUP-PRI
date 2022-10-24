@@ -1,11 +1,11 @@
 FROM solr:8.10
 
-COPY meic_courses.json /data/meic_courses.json
-
-COPY simple_schema.json /data/simple_schema.json
+COPY final.csv /data/final.csv
 
 COPY field_title_type.json /data/field_title_type.json
 
 COPY startup.sh /scripts/startup.sh
+
+RUN bin/post -c courses /data/final.csv
 
 ENTRYPOINT ["/scripts/startup.sh"]
