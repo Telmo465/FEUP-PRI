@@ -1,0 +1,105 @@
+{
+	"add-field-type": [
+        {
+            "name":"movieTitle",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            }
+        },
+        {
+            "name": "int",
+            "class": "solr.IntPointField"
+        },
+        {
+            "name": "float",
+            "class": "solr.FloatPointField"
+        },
+        {
+            "name": "boolean",
+            "class": "solr.BoolField"
+        }
+    ],
+    "add-field": [
+        {
+            "name": "movie_title"
+        },
+        {
+            "name": "original_title",
+            "type": "movieTitle"
+        },
+        {
+            "name": "year",
+            "type": "int"
+        },
+        {
+            "name": "genre"
+        },
+        {
+            "name": "director"
+        },
+        {
+            "name": "actors"
+        },
+        {
+            "name": "description"
+        },
+        {
+            "name": "avg_vote",
+            "type": "float"
+        },
+        {
+            "name": "votes",
+            "type": "int"
+        },
+        {
+            "name": "available_hulu",
+            "type": "boolean"
+        },
+        {
+            "name": "available_amazon",
+            "type": "boolean"
+        },
+        {
+            "name": "available_disney",
+            "type": "boolean"
+        },
+        {
+            "name": "available_netflix",
+            "type": "boolean"
+        },
+        {
+            "name": "movie_info"
+        },
+        {
+            "name": "tomatometer_rating",
+            "type": "float"
+        },
+        {
+            "name": "tomatometer_count",
+            "type": "float"
+        },
+        {
+            "name": "audience_rating",
+            "type": "float"
+        },
+        {
+            "name": "review_content"
+        }
+    ]
+}
