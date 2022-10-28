@@ -1,7 +1,7 @@
 {
 	"add-field-type": [
         {
-            "name":"movieTitle",
+            "name":"text",
             "class":"solr.TextField",
             "indexAnalyzer":{
                 "tokenizer":{
@@ -23,6 +23,10 @@
             }
         },
         {
+            "name": "singleStr",
+            "type": "StrField"
+        },
+        {
             "name": "int",
             "class": "solr.IntPointField"
         },
@@ -37,7 +41,8 @@
     ],
     "add-field": [
         {
-            "name": "movie_title"
+            "name": "movie_title",
+            "type": "singleStr"
         },
         {
             "name": "original_title",
@@ -48,16 +53,20 @@
             "type": "int"
         },
         {
-            "name": "genre"
+            "name": "genre",
+            "type":"text"
         },
         {
-            "name": "director"
+            "name": "director",
+            "type":"text"
         },
         {
-            "name": "actors"
+            "name": "actors",
+            "type":"text"
         },
         {
-            "name": "description"
+            "name": "description",
+            "type":"text"
         },
         {
             "name": "avg_vote",
@@ -84,7 +93,8 @@
             "type": "boolean"
         },
         {
-            "name": "movie_info"
+            "name": "movie_info",
+            "type":"text"
         },
         {
             "name": "tomatometer_rating",
@@ -99,7 +109,8 @@
             "type": "float"
         },
         {
-            "name": "review_content"
+            "name": "review_content",
+            "type":"text"
         }
     ]
 }
