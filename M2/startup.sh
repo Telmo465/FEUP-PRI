@@ -6,7 +6,10 @@ precreate-core courses
 solr start
 
 # Schema definition via API
-bin/post -c courses -url http://localhost:8983/solr/courses/schema /data/schema.csv
+curl -X POST -H 'Content-type:application/json' \
+--data-binary @/data/schema.json \
+http://localhost:8983/solr/courses/schema
+
 
 # Populate collection
 bin/post -c courses /data/final.csv

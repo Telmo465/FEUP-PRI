@@ -9,7 +9,8 @@
                 },
                 "filters":[
                     {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
-                    {"class":"solr.LowerCaseFilterFactory"}
+                    {"class":"solr.LowerCaseFilterFactory"},
+                    {"class":"solr.EnglishMinimalStemFilterFactory"}
                 ]
             },
             "queryAnalyzer":{
@@ -18,13 +19,39 @@
                 },
                 "filters":[
                     {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
-                    {"class":"solr.LowerCaseFilterFactory"}
+                    {"class":"solr.LowerCaseFilterFactory"},
+                    {"class":"solr.EnglishMinimalStemFilterFactory"}
                 ]
             }
         },
         {
-            "name": "singleStr",
-            "type": "StrField"
+            "name":"commaText",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.PatternTokenizerFactory", "pattern":", "
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"},
+                    {"class":"solr.EnglishMinimalStemFilterFactory"}
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.PatternTokenizerFactory", "pattern":", "
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"},
+                    {"class":"solr.EnglishMinimalStemFilterFactory"}
+                ]
+            }
+
+        },
+        {
+            "name": "simpleText",
+            "class": "solr.StrField"
         },
         {
             "name": "int",
@@ -35,82 +62,100 @@
             "class": "solr.FloatPointField"
         },
         {
-            "name": "boolean",
+            "name": "bool",
             "class": "solr.BoolField"
         }
     ],
     "add-field": [
         {
+            "name": "review_content",
+            "type": "text",
+            "indexed": true
+        },
+        {
             "name": "movie_title",
-            "type": "singleStr"
+            "type": "simpleText",
+            "stored":true
         },
         {
             "name": "original_title",
-            "type": "movieTitle"
+            "type": "text",
+            "stored":true
         },
         {
             "name": "year",
-            "type": "int"
+            "type": "int",
+            "stored":true
         },
         {
             "name": "genre",
-            "type":"text"
+            "type":"commaText",
+            "stored":true
         },
         {
             "name": "director",
-            "type":"text"
+            "type":"commaText",
+            "stored":true
         },
         {
             "name": "actors",
-            "type":"text"
+            "type":"commaText",
+            "stored":true
         },
         {
             "name": "description",
-            "type":"text"
+            "type":"text",
+            "stored":true
         },
         {
             "name": "avg_vote",
-            "type": "float"
+            "type": "float",
+            "stored":true
         },
         {
             "name": "votes",
-            "type": "int"
+            "type": "int",
+            "stored":true
         },
         {
             "name": "available_hulu",
-            "type": "boolean"
+            "type": "boolean",
+            "stored":true
         },
         {
             "name": "available_amazon",
-            "type": "boolean"
+            "type": "boolean",
+            "stored":true
         },
         {
             "name": "available_disney",
-            "type": "boolean"
+            "type": "boolean",
+            "stored":true
         },
         {
             "name": "available_netflix",
-            "type": "boolean"
+            "type": "boolean",
+            "stored":true
         },
         {
             "name": "movie_info",
-            "type":"text"
+            "type":"text",
+            "stored":true
         },
         {
             "name": "tomatometer_rating",
-            "type": "float"
+            "type": "float",
+            "stored":true
         },
         {
             "name": "tomatometer_count",
-            "type": "float"
+            "type": "float",
+            "stored":true
         },
         {
             "name": "audience_rating",
-            "type": "float"
-        },
-        {
-            "name": "review_content",
-            "type":"text"
+            "type": "float",
+            "stored":true
         }
     ]
 }
