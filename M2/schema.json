@@ -75,7 +75,8 @@
         {
             "name": "movie_title",
             "type": "simpleText",
-            "stored":true
+            "stored":true,
+            "indexed":true
         },
         {
             "name": "original_title",

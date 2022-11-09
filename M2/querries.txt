@@ -1,10 +1,20 @@
 1. What movies talk about valcanos.
+http://localhost:8983/solr/#/courses/query?q=description:volcano&q.op=OR&indent=true
 
 
 2. In witch films does Brad Pitt and Angelina Jollie participate together.
+http://localhost:8983/solr/#/courses/query?q=actors:%22brad%20pitt%22%0Aactors:%22angelina%20jolie%22&q.op=AND&indent=true
+
 
 
 3. What movies are thrilling.
+http://localhost:8983/solr/#/courses/query?q=review_content:thrilling&q.op=OR&indent=true
 
 
-4. What is the highest rated movie on netflix.
+
+4. What is the highest rated movie available on netflix.
+http://localhost:8983/solr/#/courses/query?q=available_netflix:true&q.op=OR&indent=true&fl=original_title,actors,director,review_content,average_rating:div(tomatometer_rating,tomatometer_count)&rows=1&fq=tomatometer_rating:%5B100%20TO%20*%5D
+
+
+#Isto para nao aparecer filmes repetidos
+group=true&group.field=movie_title
