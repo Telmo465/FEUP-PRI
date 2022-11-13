@@ -1,0 +1,40 @@
+2. In witch films does Brad Pitt and Angelina Jollie participate.
+http://localhost:8983/solr/#/imdb_movies/query?q=actors:%22brad%20pitt%22,%20%22angelina%20jolie%22&q.op=OR&indent=true&fl=movie_title,original_title,year,genre,director,actors,description,tomatometer_rating,reviews
+
+
+q:  actors: "brad pitt", "angelina jolie"
+
+q.op: OR
+
+fl: movie_title
+    original_title
+    year
+    genre
+    director
+    actors
+    description
+    tomatometer_rating
+    reviews
+
+
+
+2. In witch films does Brad Pitt and Angelina Jollie participate.
+http://localhost:8983/solr/#/imdb_movies/query?q=actors:%20%22brad%20pitt%22,%20%22angelina%20jolie%22%5E10%0Amovie_title%5E2%0Aoriginal_title%5E2&q.op=OR&indent=true&rows=100&fl=movie_title,original_title,year,genre,director,actors,description,tomatometer_rating,reviews
+
+
+q:  actors: "brad pitt", "angelina jolie"^10
+    movie_title^2
+    original_title^2
+
+q.op: OR
+
+fl: movie_title
+    original_title
+    year
+    genre
+    director
+    actors
+    description
+    tomatometer_rating
+    reviews
+

@@ -68,9 +68,9 @@
     ],
     "add-field": [
         {
-            "name": "review_content",
+            "name": "reviews",
             "type": "text",
-            "indexed": true
+            "indexed":true
         },
         {
             "name": "movie_title",
@@ -81,82 +81,82 @@
         {
             "name": "original_title",
             "type": "text",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "year",
             "type": "int",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "genre",
             "type":"commaText",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "director",
             "type":"commaText",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "actors",
-            "type":"commaText",
-            "stored":true
+            "type":"text",
+            "indexed":true
         },
         {
             "name": "description",
             "type":"text",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "avg_vote",
             "type": "float",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "votes",
             "type": "int",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "available_hulu",
             "type": "boolean",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "available_amazon",
             "type": "boolean",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "available_disney",
             "type": "boolean",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "available_netflix",
             "type": "boolean",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "movie_info",
             "type":"text",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "tomatometer_rating",
             "type": "float",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "tomatometer_count",
             "type": "float",
-            "stored":true
+            "indexed":true
         },
         {
             "name": "audience_rating",
             "type": "float",
-            "stored":true
+            "indexed":true
         }
     ]
 }

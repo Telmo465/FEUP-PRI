@@ -1,0 +1,40 @@
+1.What movies talk about spies.
+http://localhost:8983/solr/#/imdb_movies/query?q=description:spy&q.op=OR&indent=true&fl=movie_title,original_title,year,genre,director,actors,description,tomatometer_rating,reviews
+
+q: description:spy
+
+q.op: OR
+
+fl: movie_title
+    original_title
+    year
+    genre
+    director
+    actors
+    description
+    tomatometer_rating
+    reviews
+
+
+1.What movies talk about spies (boosted).
+http://localhost:8983/solr/#/imdb_movies/query?q=description:spy%5E10&q.op=OR&indent=true&rows=100&fl=movie_title,original_title,year,genre,director,actors,description,tomatometer_rating,reviews&df=movie_title%5E2%20original_title%5E2
+
+>edismax
+
+q: description:spy
+
+q.op: OR
+
+fl: movie_title
+    original_title
+    year
+    genre
+    director
+    actors
+    description
+    tomatometer_rating
+    reviews
+
+qf: movie_title^2 
+    original_title^2 
+    description^10

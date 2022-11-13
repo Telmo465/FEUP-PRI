@@ -1,6 +1,6 @@
 FROM solr:8.10
 
-COPY final.csv /data/final.csv
+COPY final_lol.csv /data/final_lol.csv
 
 COPY schema.json /data/schema.json
 

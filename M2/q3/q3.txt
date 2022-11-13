@@ -1,0 +1,42 @@
+3. What movies are thrilling and exited, but only with ratings above 90%
+http://localhost:8983/solr/#/imdb_movies/query?q=reviews:thrilling,%20exiting,%20exhilarating&q.op=OR&indent=true&fl=movie_title,original_title,year,genre,director,actors,description,tomatometer_rating,reviews&fq=tomatometer_rating:%20%5B90%20TO%20*%5D
+
+q:  reviews:thrilling, exiting, exhilarating
+
+q.op: OR
+
+fq: tomatometer_rating: [90 TO *]
+
+fl: movie_title
+    original_title
+    year
+    genre
+    director
+    actors
+    description
+    tomatometer_rating
+    reviews
+
+
+3. What movies are thrilling and exited, but only with ratings above 90%
+http://localhost:8983/solr/#/imdb_movies/query?q=reviews:thrilling,%20exiting,%20exhilarating&q.op=OR&defType=edismax&indent=true&fl=movie_title,original_title,year,genre,director,actors,description,tomatometer_rating,reviews&qf=movie_title%5E2%20original_title%5E2%20tomatometer_rating%5E10%20reviews%5E10&fq=tomatometer_rating:%20%5B90%20TO%20*%5D
+
+q:  reviews:thrilling, exiting, exhilarating
+
+q.op: OR
+
+fq: tomatometer_rating: [90 TO *]
+
+fl: movie_title
+    original_title
+    year
+    genre
+    director
+    actors
+    description
+    tomatometer_rating
+    reviews
+
+qf: movie_title^2
+    original_title^2
+    tomatometer_rating^10

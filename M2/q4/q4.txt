@@ -1,0 +1,46 @@
+4. What the highest rated movies available on netflix.
+http://localhost:8983/solr/#/imdb_movies/query?q=available_netflix:%20true&q.op=OR&indent=true&fl=movie_title,original_title,year,genre,director,actors,description,tomatometer_rating,reviews&sort=tomatometer_rating%20desc&fq=tomatometer_rating:%20%5B100%20TO%20*%5D
+
+q: available_netflix: true
+
+q.op: OR
+
+fq: tomatometer_rating: [100 TO *]
+
+sort: tomatometer_rating desc
+
+fl: movie_title
+    original_title
+    year
+    genre
+    director
+    actors
+    description
+    tomatometer_rating
+    reviews
+
+
+4. What the highest rated movies available on netflix.
+    http://localhost:8983/solr/#/imdb_movies/query?q=available_netflix:%20true&q.op=OR&indent=true&fl=movie_title,original_title,year,genre,director,actors,description,tomatometer_rating,reviews&sort=tomatometer_rating%20desc&fq=tomatometer_rating:%20%5B100%20TO%20*%5D
+
+q: available_netflix: true
+
+q.op: OR
+
+fq: tomatometer_rating: [100 TO *]
+
+sort: tomatometer_rating desc
+
+fl: movie_title
+    original_title
+    year
+    genre
+    director
+    actors
+    description
+    tomatometer_rating
+    reviews
+
+qf: movie_title^2
+    original_title^2
+    tomatometer_rating^10
