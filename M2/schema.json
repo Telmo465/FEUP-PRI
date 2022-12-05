@@ -33,8 +33,7 @@
                 },
                 "filters":[
                     {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
-                    {"class":"solr.LowerCaseFilterFactory"},
-                    {"class":"solr.EnglishMinimalStemFilterFactory"}
+                    {"class":"solr.LowerCaseFilterFactory"}
                 ]
             },
             "queryAnalyzer":{
@@ -100,7 +99,7 @@
         },
         {
             "name": "actors",
-            "type":"text",
+            "type":"commaText",
             "indexed":true
         },
         {
@@ -111,32 +110,32 @@
         {
             "name": "avg_vote",
             "type": "float",
-            "indexed":true
+            "indexed":false
         },
         {
             "name": "votes",
             "type": "int",
-            "indexed":true
+            "indexed":false
         },
         {
             "name": "available_hulu",
             "type": "boolean",
-            "indexed":true
+            "indexed":false
         },
         {
             "name": "available_amazon",
             "type": "boolean",
-            "indexed":true
+            "indexed":false
         },
         {
             "name": "available_disney",
             "type": "boolean",
-            "indexed":true
+            "indexed":false
         },
         {
             "name": "available_netflix",
             "type": "boolean",
-            "indexed":true
+            "indexed":false
         },
         {
             "name": "movie_info",

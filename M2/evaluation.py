@@ -6,8 +6,11 @@ import requests
 import pandas as pd
 
 
-QRELS_FILE = "q4/qrels4.txt"
-QUERY_URL = "http://localhost:8983/solr/imdb_movies/select?q=available_netflix:%20true&q.op=OR&indent=true&fl=movie_title,original_title,year,genre,director,actors,description,tomatometer_rating,reviews&sort=tomatometer_rating%20desc&fq=tomatometer_rating:%20%5B100%20TO%20*%5D"
+
+
+
+QRELS_FILE = "q2/qrels2.txt"
+QUERY_URL = "http://localhost:8983/solr/imdb_movies/select?fl=movie_title%2Coriginal_title%2Cyear%2Cgenre%2Cdirector%2Cactors%2Cdescription%2Ctomatometer_rating%2Creviews&indent=true&q.op=OR&q=actors%3A%20%22brad%20pitt%22%2C%20%22angelina%20jolie%22%5E10%0Amovie_title%5E2%0Aoriginal_title%5E2&rows=100"
 
 
 # Read qrels to extract relevant documents
@@ -79,7 +82,7 @@ df = pd.DataFrame([['Metric','Value']] +
 )
 
 
-with open('q4/results4-boosted.tex','w') as tf:
+with open('q2/results2-boosted.tex','w') as tf:
     tf.write(df.to_latex())
 
 
@@ -125,6 +128,6 @@ disp = PrecisionRecallDisplay([precision_recall_match.get(r) for r in recall_val
 disp.plot()
 
 plt.ylim((0, 1.1))
-plt.savefig('q4/precision_recall4-boosted.pdf')
+plt.savefig('q2/precision_recall2-boosted.pdf')
 
 
