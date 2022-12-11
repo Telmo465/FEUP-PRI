@@ -1,6 +1,36 @@
 {
 	"add-field-type": [
         {
+            "name":"nlp_text",
+            "class":"solr.TextField",
+            "analyzer":{
+                "tokenizer":{
+                    "class":"solr.OpenNLPTokenizerFactory",
+                    "sentenceModel":"en-sent.bin",
+                    "tokenizerModel":"en-token.bin"
+                },
+                "filters":[
+                    {
+                        "class": "solr.OpenNLPPOSFilterFactory",
+                        "posTaggerModel": "en-pos-maxent.bin"
+                    },
+                    {
+                        "class": "solr.OpenNLPChunkerFilterFactory",
+                        "chunkerModel": "en-chunker.bin"
+                    },
+                    {
+                        "class": "solr.TypeAsPayloadFilterFactory"
+                    },
+
+					{"class":"solr.SynonymGraphFilterFactory", "synonyms":"synonyms.txt", "expand":"false", "ignoreCase":"true"},
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"},
+                    {"class":"solr.EnglishPossessiveFilterFactory"},
+                    {"class":"solr.EnglishMinimalStemFilterFactory"}
+                ]
+            }
+        },
+        {
             "name":"text",
             "class":"solr.TextField",
             "indexAnalyzer":{
@@ -10,7 +40,9 @@
                 "filters":[
                     {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
                     {"class":"solr.LowerCaseFilterFactory"},
-                    {"class":"solr.EnglishMinimalStemFilterFactory"}
+                    {"class":"solr.EnglishPossessiveFilterFactory"},
+                    {"class":"solr.EnglishMinimalStemFilterFactory"},
+					{"class":"solr.SynonymGraphFilterFactory", "synonyms":"synonyms.txt", "expand":"false", "ignoreCase":"true"}
                 ]
             },
             "queryAnalyzer":{
@@ -20,7 +52,9 @@
                 "filters":[
                     {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
                     {"class":"solr.LowerCaseFilterFactory"},
-                    {"class":"solr.EnglishMinimalStemFilterFactory"}
+                    {"class":"solr.EnglishPossessiveFilterFactory"},
+                    {"class":"solr.EnglishMinimalStemFilterFactory"},
+					{"class":"solr.SynonymGraphFilterFactory", "synonyms":"synonyms.txt", "expand":"false", "ignoreCase":"true"}
                 ]
             }
         },
@@ -68,18 +102,18 @@
     "add-field": [
         {
             "name": "reviews",
-            "type": "text",
+            "type": "nlp_text",
             "indexed":true
         },
         {
             "name": "movie_title",
-            "type": "simpleText",
+            "type": "nlp_text",
             "stored":true,
             "indexed":true
         },
         {
             "name": "original_title",
-            "type": "text",
+            "type": "nlp_text",
             "indexed":true
         },
         {
@@ -104,7 +138,7 @@
         },
         {
             "name": "description",
-            "type":"text",
+            "type":"nlp_text",
             "indexed":true
         },
         {
@@ -120,26 +154,31 @@
         {
             "name": "available_hulu",
             "type": "boolean",
-            "indexed":false
+            "indexed":true
         },
         {
             "name": "available_amazon",
             "type": "boolean",
-            "indexed":false
+            "indexed":true
         },
         {
             "name": "available_disney",
             "type": "boolean",
-            "indexed":false
+            "indexed":true
         },
         {
             "name": "available_netflix",
             "type": "boolean",
-            "indexed":false
+            "indexed":true
         },
         {
             "name": "movie_info",
-            "type":"text",
+            "type":"nlp_text",
+            "indexed":true
+        },
+        {
+            "name": "tomatometer_rating",
+            "type": "float",
             "indexed":true
         },
         {
@@ -150,7 +189,7 @@
         {
             "name": "tomatometer_count",
             "type": "float",
-            "indexed":true
+            "indexed":false
         },
         {
             "name": "audience_rating",
