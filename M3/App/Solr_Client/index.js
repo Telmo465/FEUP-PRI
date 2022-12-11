@@ -11,7 +11,6 @@ var client = new SolrNode({
     protocol: 'http'
 });
 
-
 port = process.argv[2] || 5001;
 
 app.use(cors());
@@ -20,7 +19,6 @@ app.use(express.json());
 app.listen(port, () => {
     console.log('port running at port number : 5001')
 })
-
 
 app.get('/' , (req,res) => {
     res.send('hey solr!')
