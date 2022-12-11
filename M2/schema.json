@@ -120,22 +120,22 @@
         {
             "name": "available_hulu",
             "type": "boolean",
-            "indexed":false
+            "indexed":true
         },
         {
             "name": "available_amazon",
             "type": "boolean",
-            "indexed":false
+            "indexed":true
         },
         {
             "name": "available_disney",
             "type": "boolean",
-            "indexed":false
+            "indexed":true
         },
         {
             "name": "available_netflix",
             "type": "boolean",
-            "indexed":false
+            "indexed":true
         },
         {
             "name": "movie_info",
